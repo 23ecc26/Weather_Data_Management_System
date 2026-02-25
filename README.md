@@ -25,28 +25,6 @@ The system follows clean architecture principles with the following layers:
 - Lombok
 - Maven
 
-## Database Schema
-
-```sql
-CREATE TABLE weather_data (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    date DATE NOT NULL,
-    temperature DOUBLE NOT NULL,
-    humidity DOUBLE NOT NULL,
-    pressure DOUBLE NOT NULL,
-    weather_condition VARCHAR(255),
-    heat_index DOUBLE,
-    INDEX idx_date (date),
-    INDEX idx_temperature (temperature)
-);
-```
-
-## Prerequisites
-
-1. Java 17 or higher
-2. MySQL 8.0 or higher
-3. Maven 3.6 or higher
-
 ## Setup Instructions
 
 ### 1. Database Setup
@@ -77,22 +55,6 @@ mvn spring-boot:run
 ```
 
 The application will start on `http://localhost:8080`
-
-## CSV File Format
-
-The CSV file should have the following columns:
-
-```
-date,temperature,humidity,pressure,weather_condition,heat_index
-2010-05-12,32.5,55.3,1010.5,Sunny,35.2
-```
-
-- **date**: Date in format yyyy-MM-dd, dd-MM-yyyy, MM/dd/yyyy, or dd/MM/yyyy
-- **temperature**: Temperature in Celsius (required)
-- **humidity**: Humidity percentage (required)
-- **pressure**: Atmospheric pressure (required)
-- **weather_condition**: Weather description (optional)
-- **heat_index**: Heat index value (optional)
 
 ## API Endpoints
 
@@ -283,9 +245,6 @@ src/main/java/com/assesment/weather_forecast/
 
 1. Start the application
 2. Import sample data:
-```bash
-curl -X POST "http://localhost:8080/weather/import?filePath=C:/Users/SOFIA%20SELCY/Downloads/Weather%20data%20assessment%20V.1.0/Assessment%202/testset.csv"
-```
 
 3. Test the endpoints:
 ```bash
@@ -302,26 +261,4 @@ curl http://localhost:8080/weather/month/2015/08
 curl http://localhost:8080/weather/stats/2018
 ```
 
-## Error Handling
 
-- Invalid CSV rows are skipped with error logging
-- Duplicate dates are automatically removed
-- Missing required fields cause row to be skipped
-- Invalid date formats are handled gracefully
-- API returns appropriate HTTP status codes (200, 400, 404)
-
-## Performance Optimizations
-
-- Database indexing on frequently queried columns
-- Bulk insert for CSV import
-- Efficient query methods using Spring Data JPA
-- Transaction management for data consistency
-
-## Future Enhancements
-
-- Pagination support for large datasets
-- Caching for frequently accessed data
-- Advanced filtering options
-- Data export functionality
-- Swagger API documentation
-- Unit and integration tests
