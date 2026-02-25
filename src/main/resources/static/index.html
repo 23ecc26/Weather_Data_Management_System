@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Forecast</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        input, button { padding: 10px; margin: 5px; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Weather Forecast API</h1>
+    
+    <h3>Get Weather by Date</h3>
+    <input type="date" id="date" value="2010-05-12">
+    <button onclick="getByDate()">Get Weather</button>
+    
+    <h3>Get Weather by Month</h3>
+    <input type="number" id="month" placeholder="Month (1-12)" value="5" min="1" max="12">
+    <button onclick="getByMonth()">Get Weather</button>
+    
+    <h3>Get Temperature Stats by Year</h3>
+    <input type="number" id="year" placeholder="Year" value="2018">
+    <button onclick="getStats()">Get Stats</button>
+    
+    <h3>Response:</h3>
+    <pre id="result">Results will appear here...</pre>
+    
+    <script>
+        async function getByDate() {
+            const date = document.getElementById('date').value;
+            const response = await fetch(`http://localhost:8080/weather/date/${date}`);
+            const data = await response.json();
+            document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+        }
+        
+        async function getByMonth() {
+            const month = document.getElementById('month').value;
+            const response = await fetch(`http://localhost:8080/weather/month/${month}`);
+            const data = await response.json();
+            document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+        }
+        
+        async function getStats() {
+            const year = document.getElementById('year').value;
+            const response = await fetch(`http://localhost:8080/weather/stats/${year}`);
+            const data = await response.json();
+            document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+</html>

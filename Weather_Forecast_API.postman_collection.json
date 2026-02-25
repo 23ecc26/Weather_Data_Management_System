@@ -1,0 +1,85 @@
+{
+  "info": {
+    "name": "Weather Forecast API",
+    "description": "API collection for Weather Forecast Backend System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Import Weather Data",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/weather/import?filePath=C:/Users/SOFIA SELCY/Downloads/Weather data assessment V.1.0/Assessment 2/testset.csv",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["weather", "import"],
+          "query": [
+            {
+              "key": "filePath",
+              "value": "C:/Users/SOFIA SELCY/Downloads/Weather data assessment V.1.0/Assessment 2/testset.csv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Weather by Date",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/weather/date/2010-05-12",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["weather", "date", "2010-05-12"]
+        }
+      }
+    },
+    {
+      "name": "Get Weather by Month (All Years)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/weather/month/05",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["weather", "month", "05"]
+        }
+      }
+    },
+    {
+      "name": "Get Weather by Year and Month",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/weather/month/2015/08",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["weather", "month", "2015", "08"]
+        }
+      }
+    },
+    {
+      "name": "Get Temperature Statistics by Year",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/weather/stats/2018",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["weather", "stats", "2018"]
+        }
+      }
+    }
+  ]
+}
